@@ -8,4 +8,4 @@ class TestRequests(object):
     def testGet(self):
         r = requests.get('https://testerhome.com/api/v3/topics.json?limit=2')
         logging.info(r)
-        logging.info(json.dumps(r.json(), indent=2))
+        logging.info(json.dumps(r.json(), indent=4))
