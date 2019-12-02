@@ -40,4 +40,5 @@ time.sleep(2)
 driver.find_element_by_xpath(int).click()
 time.sleep(2)
 # driver.find_element_by_xpath(li1).click()
+# todo 定位不到下拉框内容，无法点击
 driver.find_element_by_css_selector(li2).click()
