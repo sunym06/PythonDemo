@@ -1,0 +1,2 @@
+class FilePage(object):
+    pass

@@ -3,9 +3,11 @@ from WebDemo.page.MainPage import MainPage
 
 class TestMain(object):
 
+
     def test_open(self):
         MainPage().open()
 
-    def test_intel(self):
-        title = MainPage.open()
-        # assert title == "国际"
+    def test_login(self):
+        # MainPage().to_hao123().to_people()
+        MainPage().to_hao123().to_people()
+

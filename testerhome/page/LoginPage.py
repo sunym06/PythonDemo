@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
-from page_object.page.BasePage import BasePage
+from testerhome.page.BasePage import BasePage
 from selenium.webdriver.support import expected_conditions
 
 class LoginPage(BasePage):

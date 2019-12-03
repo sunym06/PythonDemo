@@ -4,20 +4,19 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 
 class ChromeDrivers(object):
 
-    def __init__(self):
-        self.driver: WebDriver
-        self.driver = webdriver.Chrome()
+    driver: WebDriver
 
-    def get_driver(self, url):
-        # self.url = url
-        self.driver.implicitly_wait(30)
-        self.driver.get(url)
-        return self.driver
+    @classmethod
+    def get_driver(cls):
+        cls.driver = webdriver.Chrome()
+        url = 'http://www.baidu.com'
+        cls.driver.implicitly_wait(30)
+        cls.driver.get(url)
+        return cls.driver
 
 
 if __name__ == "__main__":
     print("began to run ")
-    urls = 'http://www.baidu.com'
     a = ChromeDrivers()
-    a.get_driver(urls)
+    a.get_driver()
     # a = ChromeDrivers(url).get_driver()
