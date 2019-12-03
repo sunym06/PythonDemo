@@ -1,5 +1,3 @@
-import time
-
 from RPA.pages.DemoPage import DemoPage
 
 

@@ -2,16 +2,18 @@ from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from page_object.driver.Client import AndroidClient
+from testerhome.driver.Client import AndroidClient
 import yaml
 import re
+
 
 class BasePage(object):
     element_black=[
         (By.XPATH, "ddd")
     ]
+
     def __init__(self):
-        self.driver: WebDriver=self.getDriver()
+        self.driver: WebDriver = self.getDriver()
 
     @classmethod
     def getDriver(cls):

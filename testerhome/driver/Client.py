@@ -2,10 +2,11 @@ from appium import webdriver
 from appium.webdriver.webdriver import WebDriver
 import yaml
 
+
 class AndroidClient(object):
 
-    driver:WebDriver
-    platform="android"
+    driver: WebDriver
+    platform = "android"
     @classmethod
     def install_app(cls) -> WebDriver:
 

@@ -4,7 +4,7 @@ from WebDemo.page.MainPage import MainPage
 class TestMain(object):
 
     def test_open(self):
-        MainPage.open()
+        MainPage().open()
 
     def test_intel(self):
         title = MainPage.open()

@@ -1,16 +1,19 @@
-from WebDemo.driver.WebDrivers import WebDrivers
-from WebDemo.page.NewPage import NewPage
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.webdriver import WebDriver
+from WebDemo.driver.ChromeDrivers import ChromeDrivers
 
 
 class MainPage(object):
-    drivers = WebDrivers.get_drivers()
+    _url = 'http://www.baidu.com'
+    hao123 = (By.XPATH, '//a[text()="hao123"]')
+    def __init__(self):
+        self.drivers: WebDriver
+        self.drivers = ChromeDrivers().get_driver(self._url)
 
-    @classmethod
-    def open(cls):
-        cls.drivers.find_element_by_xpath('//a[text()="名站"]').click()
-        return NewPage
+    def open(self):
+        self.drivers.find_element(* hao123).click()
 
-    def goto_news(self):
-        self.drivers.find_element_by_xpath('//div[@class="navBarContainer-content"]//a[contains(text(),"新闻")]').click()
-        return NewPage
 
+if __name__ == "__main__":
+    a = MainPage()
+    a.open()
