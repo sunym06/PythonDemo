@@ -1,0 +1,2 @@
+class TiePage(object):
+    pass
