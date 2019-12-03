@@ -1,5 +1,6 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
-from WebDemo.drivers.ChromeDriver import ChromeDriver
+from RPA.drivers.ChromeDriver import ChromeDriver
+
 # from WebDemo.pages.FirstPage import FirstPage
 
 

@@ -1,5 +1,4 @@
-from RPA_test.pages import LoginPage
-import pytest
+LoginPage
 
 
 class TestLogin(object):
