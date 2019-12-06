@@ -1,32 +1,40 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.by import By
 
-from WebDemo.driver.ChromeDrivers import ChromeDrivers
+# from WebDemo.page.BasePage import BasePage
+from WebDemo.page.BasePage import BasePage
 from WebDemo.page.HaoPage import HaoPage
-from WebDemo.page.PeoplePage import PeoplePage
+from WebDemo.page.NewsPage import NewsPage
 
 
-class MainPage(object):
+class MainPage(BasePage):
     _hao123 = (By.XPATH, '//a[text()="hao123"]')
+    _news = (By.XPATH, '//a[text()="新闻"]')
 
+    # 引用BasePage之后调用BasePage的init方法，如果MainPage重新写的话会覆盖掉init
     def __init__(self):
         self.drivers: WebDriver
-        self.drivers = ChromeDrivers.get_driver()
+        self.drivers = BasePage().GetDrivers()
         # self.drivers = ChromeDrivers.get_driver()
         # self.drivers = ChromeDrivers().get_driver()
         # self.drivers = ChromeDrivers().get_driver()
-        print('make a driver')
+        # print('make a driver')
 
     def to_hao123(self):
-        self.drivers.find_element(By.XPATH, '//a[text()="hao123"]').click()
+        self.drivers.find_element(*self._hao123).click()
+        # self.drivers.find_element_by_xpath('//a[text()="hao123"]').click()
+        # self.drivers.find_element(By.XPATH, '//a[text()="hao123"]').click()
         print('open hao123')
         return HaoPage()
+
+    def to_news(self):
+        self.drivers.find_element(*self._news).click()
+        return NewsPage()
 
     def my_find(self, kv):
         return self.drivers.find_element(*kv)
 
 
 if __name__ == "__main__":
-    a = MainPage()
-    a.to_hao123()
+    a = MainPage().to_hao123()
+    # a.to_hao123()

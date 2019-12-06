@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
-from WebDemo.MyDriver import MyDriver
-from WebDemo.NewsPage import NewsPage
+from WebDemo.demo.MyDriver import MyDriver
+from WebDemo.demo.NewsPage import NewsPage
 
 
 class BaiduPage(object):

@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
-
-from WebDemo.MyDriver import MyDriver
-from WebDemo.TiePage import TiePage
+from WebDemo.demo.MyDriver import MyDriver
+from WebDemo.demo.TiePage import TiePage
 
 
 class NewsPage(object):

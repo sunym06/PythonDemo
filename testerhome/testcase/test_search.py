@@ -1,8 +1,8 @@
 
 import pytest
 
-from page_object.page.App import App
-from page_object.page.MainPage import MainPage
+from testerhome.page_object.page.App import App
+from testerhome.page_object.page.MainPage import MainPage
 
 
 class TestSelected(object):
