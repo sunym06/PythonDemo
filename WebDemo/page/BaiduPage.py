@@ -7,7 +7,7 @@ from WebDemo.page.HaoPage import HaoPage
 from WebDemo.page.NewsPage import NewsPage
 
 
-class MainPage(BasePage):
+class BaiduPage(BasePage):
     _hao123 = (By.XPATH, '//a[text()="hao123"]')
     _news = (By.XPATH, '//a[text()="新闻"]')
 
@@ -36,5 +36,5 @@ class MainPage(BasePage):
 
 
 if __name__ == "__main__":
-    a = MainPage().to_hao123()
+    a = BaiduPage().to_hao123()
     # a.to_hao123()

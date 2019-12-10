@@ -1,6 +1,9 @@
 import time
-
+import pytest
 from selenium import webdriver
+
+
+
 #
 #
 # class Tem(object):
@@ -25,3 +28,4 @@ driver.find_element_by_xpath('//li[@class="hdline0"]').click()
 # print(hands)
 # for i in hands:
 #     driver.find_element_by_xpath('//a[text()="打开"]').click()
+
