@@ -30,5 +30,5 @@ class TestMain(object):
 
     # def test_to_ti1(self):
     #     MainPage().to_news().to_ti1()
-    #     hands = MainPage().drivers.window_handles
+    #     hands = MainPage().Drivers.window_handles
     #     for i in hands

@@ -8,7 +8,7 @@ from testerhome.page_object.page.MainPage import MainPage
 class TestSelected(object):
     @classmethod
     def setup_class(cls):
-        cls.mainPage=App.main()
+        cls.mainPage=App.home()
 
     def setup_method(self):
         self.mainPage: MainPage =TestSelected.mainPage

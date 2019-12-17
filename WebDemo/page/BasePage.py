@@ -8,10 +8,10 @@ class BasePage(object):
     _url = 'http://www.baidu.com'
 
     # def __init__(self):
-    #     self.drivers: WebDriver
-    #     self.drivers = TheDrivers().drivers
-    #     self.drivers.get(self._url)
-    #     self.drivers.implicitly_wait(30)
+    #     self.Drivers: WebDriver
+    #     self.Drivers = TheDrivers().Drivers
+    #     self.Drivers.get(self._url)
+    #     self.Drivers.implicitly_wait(30)
 
     @classmethod
     def GetDrivers(cls):
@@ -20,7 +20,7 @@ class BasePage(object):
         cls.drivers.get(cls._url)
         cls.drivers.implicitly_wait(30)
         # self.driver.get(url)
-        # self.drivers = TheDrivers.get_driver().get(url)
+        # self.Drivers = TheDrivers.get_driver().get(url)
         return cls.drivers
 
 

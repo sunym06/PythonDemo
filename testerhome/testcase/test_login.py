@@ -4,7 +4,7 @@ import pytest
 class TestLogin(object):
     @classmethod
     def setup_class(cls):
-        cls.profilePage=App.main().gotoProfile()
+        cls.profilePage=App.home().gotoProfile()
     def setup_method(self):
         self.loginPage=self.profilePage.gotoLogin()
 
