@@ -10,12 +10,12 @@ class HaoPage(BasePage):
         # pass
 
     def to_people(self):
-        # drivers = ChromeDrivers.get_driver()
-        # self.drivers.find_element((By.XPATH, '//a[text()="人民网"]')).click()
+        # Drivers = ChromeDrivers.get_driver()
+        # self.Drivers.find_element((By.XPATH, '//a[text()="人民网"]')).click()
         # .get_driver().find_element((By.XPATH, '//a[text()="人民网"]')).click()
-        # self.drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
+        # self.Drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
         self.drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
-        # self.drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
+        # self.Drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
         # ChromeDrivers.get_driver().find_element(By.XPATH, '//a[text()="人民网"]').click()
 
 

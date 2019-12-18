@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 class TheDrivers(object):
 
     driver: WebDriver
+    s = 3
 
     def __init__(self):
         self.drivers = webdriver.Chrome()
@@ -23,5 +24,6 @@ class TheDrivers(object):
 if __name__ == "__main__":
     print("began to run ")
     a = TheDrivers()
+
 
     # a = ChromeDrivers(url).get_driver()

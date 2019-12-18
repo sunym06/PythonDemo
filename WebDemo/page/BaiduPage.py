@@ -15,21 +15,19 @@ class BaiduPage(BasePage):
     def __init__(self):
         self.drivers: WebDriver
         self.drivers = BasePage().GetDrivers()
-        # self.drivers = ChromeDrivers.get_driver()
-        # self.drivers = ChromeDrivers().get_driver()
-        # self.drivers = ChromeDrivers().get_driver()
+        # self.Drivers = ChromeDrivers.get_driver()
+        # self.Drivers = ChromeDrivers().get_driver()
+        # self.Drivers = ChromeDrivers().get_driver()
         # print('make a driver')
 
     def to_hao123(self):
         self.drivers.find_element(*self._hao123).click()
-        self.drivers.find
-        # self.drivers.find_element_by_xpath('//a[text()="hao123"]').click()
-        # self.drivers.find_element(By.XPATH, '//a[text()="hao123"]').click()
+        # self.Drivers.find_element_by_xpath('//a[text()="hao123"]').click()
+        # self.Drivers.find_element(By.XPATH, '//a[text()="hao123"]').click()
         print('open hao123')
         return HaoPage()
 
     def to_news(self):
-        self.drivers.find
         self.drivers.find_element(*self._news).click()
         return NewsPage()
 
