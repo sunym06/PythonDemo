@@ -18,6 +18,7 @@ class MainPage(BasePage):
         self.driver.quit()
 
 
+
 if __name__ == "__main__":
     # b = MainPage().driver.get('http://www.baidu.com')
     a = MainPage().home()
