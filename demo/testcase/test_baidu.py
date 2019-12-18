@@ -21,7 +21,7 @@ class TestBaidu():
 
     def test_bai(self):
         url = 'http://www.baidu.com'
-        self.Main.to_main(url).to_haopage()
+        self.Main.main(url).to_haopage()
         print('abd')
 
 

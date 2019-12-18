@@ -3,7 +3,7 @@ import time
 from RPAControl.Pages.MainPage import MainPage
 
 
-class Test_tem():
+class TestRobot():
 
     @classmethod
     def setup_class(cls):
@@ -27,7 +27,7 @@ class Test_tem():
 
     def test_tem(self):
         self.Pages.to_robot()
-        time.sleep(5)
+        time.sleep(2)
         # self.driver.open_robotmanger().to_robot().add_robot()
         print('\n  =========test_tem=========\n')
 
@@ -37,5 +37,9 @@ class Test_tem():
         print('\n  =========test_b=========\n')
 
     def test_add_robot(self):
-        self.Pages.to_robot().add_robot().add()
+        time.sleep(3)
+        self.Pages.to_robot().add_robot().add('', '无人值守')
+
+    def test_search(self):
+        self.Pages.to_robot().search_robot("", "无人值守")
 

@@ -1,9 +1,13 @@
-from selenium import webdriver
+# from selenium import webdriver
+#
+# url = 'http://www.ce.cn/xwzx/gnsz/gdxw/201912/18/t20191218_33912117.shtml'
+# driver = webdriver.Chrome()
+# driver.get(url)
+# driver.find_element_by_id('articleTitle').click()
 
-url = 'http://www.ce.cn/xwzx/gnsz/gdxw/201912/18/t20191218_33912117.shtml'
-driver = webdriver.Chrome()
-driver.get(url)
-driver.find_element_by_id('articleTitle').click()
+a = "sdfdg{}".format('hello')
+b = ['2']
+print(b[-1])
 
 
 # from datetime import datetime

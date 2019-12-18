@@ -14,7 +14,7 @@ class MainPage(BasePage):
         # self.driver.get(url)
         # self.finds(self._hao)
 
-    def to_main(self, url):
+    def main(self, url):
         self.driver.get(url)
         return BaiduPage()
     # def start(self, url):

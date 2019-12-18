@@ -10,6 +10,7 @@ class TestMain(object):
     @classmethod
     def setup_class(cls):
         print("setup class")
+        cls.main = BaiduPage()
 
     @classmethod
     def teardown_class(self):
@@ -20,11 +21,11 @@ class TestMain(object):
 
     def test_to_people(self):
         # MainPage().to_hao123().to_people()
-        BaiduPage().to_hao123().to_people()
+        self.main.to_hao123().to_people()
 
     def test_to_people2(self):
         # MainPage().to_hao123().to_people()
-        BaiduPage().to_hao123()
+        self.main.to_hao123()
 
 
 

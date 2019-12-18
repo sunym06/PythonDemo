@@ -14,12 +14,13 @@ class AddRobotPage(BasePage):
     _save = (By.XPATH, '//span[text()="保 存"]')
     _cancels = (By.XPATH, '//span[text()="取 消"]')
 
-    def add(self):
+    def add(self, robotname, robotkind):
         times = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         self.find_ele(self._robotName).send_keys(times)
-        self.find_ele(self._robotKind).click()
-        print("len: " + str(len(self.find_eles(self._lis))))
-        self.find_eles(self._lis)[1].click()
+        self.robotkind(robotkind)
+        # self.click_list(robotname, robotstatus)
+        # self.find_ele(self._robotKind).click()
+        # self.find_eles(self._lis)[1].click()
         self.find_ele(self._description).send_keys(times+'\n' + times + '\n' + times)
         self.find_ele(self._save).click()
 
