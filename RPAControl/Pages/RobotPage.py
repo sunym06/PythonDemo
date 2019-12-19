@@ -11,8 +11,6 @@ class RobotPage(BasePage):
     _clear = (By.XPATH, '//span[text()="清 空"]')
     _robotName = (By.XPATH, '//input[@placeholder="机器人名称"]')
     _robotKind = (By.XPATH, '//input[@placeholder="机器人类型"]')
-    # _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li/span[text()="无人值守"]')
-
 
     def add_robot(self):
         self.find_ele(self._add).click()

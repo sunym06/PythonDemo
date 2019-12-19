@@ -29,11 +29,13 @@ class TestRobot(object):
         self.Pages.to_robot().add_robot()
 
     def test_add_robot(self):
-        time.sleep(3)
-        self.Pages.to_robot().add_robot().edit('', '无人值守')
+        robot_name = "test"
+        robot_kind = '无人值守'
+        robot_description = ""
+        self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
 
     def test_edit_robot(self):
-        name = '2019-12-19:12-45-41'
+        name = 'test'
         times = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
         robot_kind = '人工参与'
         description = 'EDIT: \n' + times + '\n' + times

@@ -18,7 +18,7 @@ class BasePage(object):
         return ele
 
     def find_elements(self, kv) -> list:
-        time.sleep(2)
+        time.sleep(1)
         for i in range(5):
             elements = self.driver.find_elements(*kv)
         return elements
