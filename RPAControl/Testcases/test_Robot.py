@@ -1,6 +1,8 @@
 import time
 from datetime import datetime
 
+import pytest
+
 from RPAControl.Pages.MainPage import MainPage
 
 
@@ -28,21 +30,23 @@ class TestRobot(object):
     def test_b(self):
         self.Pages.to_robot().add_robot()
 
-    def test_add_robot(self):
-        robot_name = "test"
-        robot_kind = '无人值守'
-        robot_description = ""
+    @pytest.mark.parametrize('robot_name', 'robot_kind', 'robot_description', [
+        ('testA', '无人值守’，1'), ('testB', '人工参与’，2'), ('testC', '无人值守’，3')])
+    def test_add_robot(self, robot_name, robot_kind, robot_description):
+        # robot_name = robot_name
+        # robot_kind = robot_kind
+        # robot_description = robot_description
         self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
 
     def test_edit_robot(self):
-        name = 'test'
+        name = 'test5'
         times = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
         robot_kind = '人工参与'
         description = 'EDIT: \n' + times + '\n' + times
         self.Pages.to_robot().edit_robot(name).edit(times, robot_kind, description)
 
     def test_del_robot(self, cancel=True):
-        name = '2019-12-19:12-56-14'
+        name = 'test3'
         self.Pages.to_robot().del_robot(name)
 
     def test_robot_search(self):

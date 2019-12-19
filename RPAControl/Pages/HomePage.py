@@ -23,8 +23,9 @@ class HomePage(BasePage):
         return status
 
     def open_robot_manger(self):
-        # time.sleep(3)
+        # self.driver.execute_script("document.body.style.zoom='0.9'")
         # self.find_ele(self._RobotManger).click()
+        self.driver.execute_script('alert("aaa")')
         self.find_ele(self._RobotManger).click()
         return self
 

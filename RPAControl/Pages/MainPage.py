@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.chrome.webdriver import WebDriver
 from RPAControl.Drivers.ChromeDrivers import ChromeDrivers
 from RPAControl.Pages.BasePage import BasePage
@@ -11,8 +13,7 @@ class MainPage(BasePage):
     driver: WebDriver
 
     def home(self):
-        # self.driver = ChromeDrivers.get_driver()
-        self.driver.get(self._url)
+        self.driver.get(self._url2)
         return LoginPage()
 
     def close(self):
@@ -20,5 +21,8 @@ class MainPage(BasePage):
 
 
 if __name__ == "__main__":
-    # b = MainPage().driver.get('http://www.baidu.com')
-    a = MainPage().home()
+    b = MainPage().driver
+    b.get('http://www.baidu.com')
+    b.execute_script("document.body.style.zoom='0.5'")
+
+    # a = MainPage().home()
