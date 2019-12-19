@@ -13,20 +13,10 @@ class TestRobot(object):
 
         print('\n  =========setup_class=========\n')
 
-    # def setup_method(self):
-    #     self.a.home().login()
-    #     return self.a
-
     def teardown_method(self):
         self.Pages.to_home()
         # return self
         print('\n  =========teardown_method=========\n')
-
-    def test_tem(self):
-        self.Pages.to_robot()
-
-    def test_b(self):
-        self.Pages.to_robot().add_robot()
 
     def test_add_robot(self):
         robot_name = "test"
@@ -35,11 +25,11 @@ class TestRobot(object):
         self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
 
     def test_edit_robot(self):
-        name = 'test'
-        times = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
-        robot_kind = '人工参与'
-        description = 'EDIT: \n' + times + '\n' + times
-        self.Pages.to_robot().edit_robot(name).edit(times, robot_kind, description)
+        contents = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
+        robot_name = '2019-12-19:12-43-10'
+        robot_kind = "无人值守"
+        description = 'EDIT: \n' + contents + '\n' + contents
+        self.Pages.to_robot().edit_robot(robot_name).edit(contents, robot_kind, description)
 
     def test_del_robot(self, cancel=True):
         name = '2019-12-19:12-56-14'
