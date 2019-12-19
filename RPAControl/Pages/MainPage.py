@@ -12,12 +12,11 @@ class MainPage(BasePage):
 
     def home(self):
         # self.driver = ChromeDrivers.get_driver()
-        self.driver.get(self._url2)
+        self.driver.get(self._url)
         return LoginPage()
 
     def close(self):
         self.driver.quit()
-
 
 
 if __name__ == "__main__":

@@ -1,9 +1,8 @@
-import time
-
 from selenium.webdriver.common.by import By
 
-from RPAControl.Pages.AddRobotPage import AddRobotPage
+from RPAControl.Pages.RobotAddPage import RobotAddPage
 from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.RobotEditPage import RobotEditPage
 
 
 class RobotPage(BasePage):
@@ -12,12 +11,30 @@ class RobotPage(BasePage):
     _clear = (By.XPATH, '//span[text()="清 空"]')
     _robotName = (By.XPATH, '//input[@placeholder="机器人名称"]')
     _robotKind = (By.XPATH, '//input[@placeholder="机器人类型"]')
-    _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li/span[text()="无人值守"]')
+    # _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]//ul[@class="el-scrollbar__view el-select-dropdown__list"]/li/span[text()="无人值守"]')
 
 
     def add_robot(self):
         self.find_ele(self._add).click()
-        return AddRobotPage()
+        return RobotAddPage()
+
+    def edit_robot(self, name):
+        _name = (By.XPATH, '//span[text()="{}"]/../../../..//span[text()="编 辑"]'.format(name))
+        print(_name)
+        self.find_elements(_name)[-1].click()
+        return RobotEditPage()
+
+    def del_robot(self, name, cancel=False):
+        _name = (By.XPATH, '//span[text()="{}"]/../../../..//span[text()="删 除"]'.format(name))
+        _del = (By.XPATH, '//span[contains(text(),"确定")]')
+        _cancel = (By.XPATH, '//span[contains(text(),"确定")]')
+        print("_name: " + '//span[text()="{}"]/../../../..//span[text()="删 除"]'.format(name))
+        self.find_elements(_name)[-1].click()
+        if cancel:
+            self.find_ele(_cancel)
+        else:
+            self.find_ele(_del)
+        return RobotPage()
 
     def search_robot(self, robotname, robotkind):
         if robotname != "":
@@ -27,7 +44,7 @@ class RobotPage(BasePage):
             # time.sleep(1)
             # self.find_ele(self._lis).click()
             # self.click_list('请选择 机器人类型', '无人值守')
-            self.robotkind(robotkind)
+            self.robot_kind(robotkind)
         self.find_ele(self._search).click()
         return self
 

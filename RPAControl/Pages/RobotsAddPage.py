@@ -1,0 +1,2 @@
+class RobotsAddPage(object):
+    pass
