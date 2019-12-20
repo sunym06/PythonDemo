@@ -12,7 +12,7 @@ class BaiduPage(object):
         self.driver = MyDriver.get_drivers()
 
     def to_news(self):
-        self.driver.find_element(By.XPATH, '//a[text()="新闻"]').click()
+        self.driver.find(By.XPATH, '//a[text()="新闻"]').click()
         return NewsPage()
 
 

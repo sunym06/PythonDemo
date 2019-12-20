@@ -11,7 +11,7 @@ class BasePage(object):
         self.driver = ChromeDriver().driver
 
     def finds(self, kv) -> WebElement:
-        return self.driver.find_element(*kv)
+        return self.driver.find(*kv)
 
 
 if __name__ == "__main__":

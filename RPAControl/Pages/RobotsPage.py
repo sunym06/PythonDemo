@@ -12,17 +12,17 @@ class RobotsPage(BasePage):
     _robotKind = (By.XPATH, '//input[@placeholder="机器人组类型"]')
 
     def add_robot(self):
-        self.find_element(self._add).click()
+        self.find(self._add).click()
         return RobotsAddPage()
 
     def search_robots(self, robots_name, robots_kind):
         if robots_name != "":
-            self.find_element(self._robotName).send_keys(robots_name)
+            self.find(self._robotName).send_keys(robots_name)
         if robots_kind != "":
             self.robots_kind(robots_kind)
-        self.find_element(self._search).click()
+        self.find(self._search).click()
         return self
 
     def clear_robot(self):
-        self.find_element(self._clear).click()
+        self.find(self._clear).click()
         return self

@@ -14,7 +14,7 @@ class HaoPage(BasePage):
         # self.Drivers.find_element((By.XPATH, '//a[text()="人民网"]')).click()
         # .get_driver().find_element((By.XPATH, '//a[text()="人民网"]')).click()
         # self.Drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
-        self.drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
+        self.drivers.find(By.XPATH, '//a[text()="人民网"]').click()
         # self.Drivers.find_element(By.XPATH, '//a[text()="人民网"]').click()
         # ChromeDrivers.get_driver().find_element(By.XPATH, '//a[text()="人民网"]').click()
 

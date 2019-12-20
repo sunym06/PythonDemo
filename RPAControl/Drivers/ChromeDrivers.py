@@ -7,7 +7,7 @@ class ChromeDrivers(object):
     def get_driver(cls):
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
-        cls.driver.implicitly_wait(20)
+        cls.driver.implicitly_wait(5)
         return cls.driver
 
 

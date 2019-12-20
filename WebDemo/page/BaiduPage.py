@@ -21,7 +21,7 @@ class BaiduPage(BasePage):
         # print('make a driver')
 
     def to_hao123(self):
-        self.drivers.find_element(*self._hao123).click()
+        self.drivers.find(*self._hao123).click()
         self.drivers.find
         # self.drivers.find_element_by_xpath('//a[text()="hao123"]').click()
         # self.drivers.find_element(By.XPATH, '//a[text()="hao123"]').click()
@@ -30,11 +30,11 @@ class BaiduPage(BasePage):
 
     def to_news(self):
         self.drivers.find
-        self.drivers.find_element(*self._news).click()
+        self.drivers.find(*self._news).click()
         return NewsPage()
 
     def my_find(self, kv):
-        return self.drivers.find_element(*kv)
+        return self.drivers.find(*kv)
 
 
 if __name__ == "__main__":

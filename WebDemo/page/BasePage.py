@@ -26,7 +26,7 @@ class BasePage(object):
         return cls.drivers
 
     def find(self, kv) -> WebElement:
-        return self.drivers.find_element(*kv)
+        return self.drivers.find(*kv)
 
     
 
