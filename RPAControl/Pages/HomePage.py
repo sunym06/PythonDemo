@@ -15,7 +15,7 @@ class HomePage(BasePage):
     def _is_open(self):
         status = False
         time.sleep(2)
-        ele = self.find_ele(self._robot_manger_status)
+        ele = self.find_element(self._robot_manger_status)
         if 'is-opened' in ele.get_attribute('class'):
             status = True
         print("class is :" + ele.get_attribute('class'))
@@ -26,26 +26,26 @@ class HomePage(BasePage):
         # self.driver.execute_script("document.body.style.zoom='0.9'")
         # self.find_ele(self._RobotManger).click()
         self.driver.execute_script('alert("aaa")')
-        self.find_ele(self._RobotManger).click()
+        self.find_element(self._RobotManger).click()
         return self
 
     def to_robot(self):
         # self.find_ele(self._RobotManger).click()
         # ele = self.find_ele(self._RobotMangerStatus)
         if self._is_open():
-            self.find_ele(self._Robot).click()
+            self.find_element(self._Robot).click()
         else:
-            self.find_ele(self._RobotManger).click()
-            self.find_ele(self._Robot).click()
+            self.find_element(self._RobotManger).click()
+            self.find_element(self._Robot).click()
         return RobotPage()
 
     def to_robots(self):
         print("status: " + str(self._is_open()))
         if self._is_open():
-            self.find_ele(self._RobotGroup).click()
+            self.find_element(self._RobotGroup).click()
         else:
-            self.find_ele(self._RobotManger).click()
-            self.find_ele(self._RobotGroup).click()
+            self.find_element(self._RobotManger).click()
+            self.find_element(self._RobotGroup).click()
         return RobotsPage()
 
 

@@ -12,7 +12,7 @@ class BasePage(object):
     driver: WebDriver
     driver = ChromeDrivers.get_driver()
 
-    def find_ele(self,  kv) -> WebElement:
+    def find_element(self, kv) -> WebElement:
         for i in range(5):
             ele = self.driver.find_element(*kv)
         return ele
@@ -28,12 +28,12 @@ class BasePage(object):
         _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]'
                 '//ul[@class="el-scrollbar__view el-select-dropdown__list"]'
                 '/li/span[text()={}]'.format(val))
-        self.find_ele(self._robotKind).click()
+        self.find_element(self._robotKind).click()
         time.sleep(2)
         if len(self.find_elements(self._lis)) >1:
             self.find_elements(self._lis)[1].click()
         else:
-            self.find_ele(self._lis).click()
+            self.find_element(self._lis).click()
 
     def robot_kind(self, robot_kind):
         _robotKind = (By.XPATH, '//input[contains(@placeholder,"机器人类型")]')

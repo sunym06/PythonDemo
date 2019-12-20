@@ -11,11 +11,18 @@ class RobotEditPage(BasePage):
     _robotKind = (By.XPATH, '//input[@placeholder="请选择 机器人类型"]')
     _edit = (By.XPATH, '//span[text()="修 改"]')
     _cancels = (By.XPATH, '//span[text()="取 消"]')
+    _message = (By.XPATH, '//p[@class="el-message__content"]')
 
     def edit(self, robot_name, robot_kind, description):
-        self.find_ele(self._robotName).clear()
-        self.find_ele(self._robotName).send_keys(robot_name)
-        self.robot_kind(robot_kind)
-        self.find_ele(self._description).clear()
-        self.find_ele(self._description).send_keys(description)
-        self.find_ele(self._edit).click()
+        if robot_name is not None:
+            self.find_element(self._robotName).clear()
+            self.find_element(self._robotName).send_keys(robot_name)
+        if robot_kind is not None:
+            self.robot_kind(robot_kind)
+            self.find_element(self._description).clear()
+        if description is not None:
+            self.find_element(self._description).clear()
+            self.find_element(self._description).send_keys(description)
+            self.find_element(self._edit).click()
+        message = self.find_element(self._message).get_attribute('innerHTML')
+        return message

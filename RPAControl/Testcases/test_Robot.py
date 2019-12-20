@@ -1,6 +1,8 @@
 import time
 from datetime import datetime
 
+import pytest
+
 from RPAControl.Pages.MainPage import MainPage
 
 
@@ -13,37 +15,32 @@ class TestRobot(object):
 
         print('\n  =========setup_class=========\n')
 
-    # def setup_method(self):
-    #     self.a.home().login()
-    #     return self.a
-
     def teardown_method(self):
         self.Pages.to_home()
         # return self
         print('\n  =========teardown_method=========\n')
 
-    def test_tem(self):
-        self.Pages.to_robot()
-
-    def test_b(self):
-        self.Pages.to_robot().add_robot()
-
-    def test_add_robot(self):
-        robot_name = "test"
-        robot_kind = '无人值守'
-        robot_description = ""
+    @pytest.mark.parametrize('robot_name, robot_kind, robot_description', [
+        ('T5', '无人值守', 'test 1'),
+        ('T6', '人工参与', 'test 1'),
+        ('T7', '人工参与', 'test 1'),
+        ('T8', '人工参与', 'test 1')
+    ])
+    def test_add_robot(self, robot_name, robot_kind, robot_description):
         self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
 
-    def test_edit_robot(self):
-        name = 'test'
-        times = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
-        robot_kind = '人工参与'
-        description = 'EDIT: \n' + times + '\n' + times
-        self.Pages.to_robot().edit_robot(name).edit(times, robot_kind, description)
+    @pytest.mark.parametrize('name', ['T7', 'T8'])
+    def test_edit_robot(self, name):
+        contents_str = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
+        robot_name = contents_str
+        robot_kind = "无人值守"
+        description = 'EDIT: \n' + contents_str + '\n' + contents_str
+        self.Pages.to_robot().edit_robot(name).edit(None, None, description)
 
-    def test_del_robot(self, cancel=True):
-        name = '2019-12-19:12-56-14'
+    @pytest.mark.parametrize('name', ['T5', 'T6', 'T7', 'T8'])
+    def test_del_robot(self, name):
         self.Pages.to_robot().del_robot(name)
+
 
     def test_robot_search(self):
         self.Pages.to_robot().search_robot("", "无人值守")
@@ -54,3 +51,5 @@ class TestRobot(object):
     def test_robots_search(self):
         self.Pages.to_robots().search_robots("wang", "测试")
 
+    def test_t(self):
+        self.Pages.to_robot().del_robot('T12', cancel=True)
