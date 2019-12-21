@@ -14,11 +14,11 @@ class LoginPage(BasePage):
 
     def login(self):
         # self.driver = self.get_driver()
-        self.find(*self._user).clear()
-        self.find(*self._user).send_keys('admin')
-        self.find(*self._password).clear()
-        self.find(*self._password).send_keys('111111')
-        self.find(*self._login).click()
+        self.find(self._user).clear()
+        self.find(self._user).send_keys('admin')
+        self.find(self._password).clear()
+        self.find(self._password).send_keys('111111')
+        self.find(self._login).click()
         return HomePage()
 
 

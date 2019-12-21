@@ -14,16 +14,19 @@ class BasePage(object):
     driver: WebDriver
     driver = ChromeDrivers.get_driver()
 
-    def find(self, by, value) -> WebElement:
-        try:
-            for i in range(3):
-                ele = self.driver.find_element(By.by)
-            return ele
-        except NoSuchElementException as e:
-            print("找不到以下元素:" + print(*value))
+    def find(self, kv) -> WebElement:
+        ele = self.driver.find_element(*kv)
+        return ele
+        # try:
+        #     for i in range(3):
+        #         ele = self.driver.find_element(by, value)
+        #     return ele
+        # except NoSuchElementException as e:
+        #     print("找不到以下元素:")
+        #     print(by, value)
 
     def finds(self, kv) -> list:
-        # time.sleep(1)
+        time.sleep(2)
         for i in range(3):
             elements = self.driver.find_elements(*kv)
         return elements
@@ -41,13 +44,20 @@ class BasePage(object):
             self.find(self._lis).click()
 
     def robot_kind(self, robot_kind):
+        # 点击下拉框后个别情况下点击不到元素，是因为点击后下拉框未及时加载出内容，
+        # 而使用finds能够查到[-2]元素，故结束finds但未找到指定的元素
+
         _robotKind = (By.XPATH, '//input[contains(@placeholder,"机器人类型")]')
-        _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]//'
-                          'ul[@class="el-scrollbar__view el-select-dropdown__list"]'
-                          '/li/span[text()="{}"]'.format(robot_kind))
-        print(_lis)
+        # _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]//'
+        #                   'ul[@class="el-scrollbar__view el-select-dropdown__list"]'
+        #                   '/li/span[text()="{}"]'.format(robot_kind))
+        li = (By.XPATH, '//li[contains(@class,"el-select-dropdown__item")]/span[text()="{}"]'.format(robot_kind))
+        # print(_lis)
         self.finds(_robotKind)[-1].click()
-        self.finds(_lis)[-1].click()
+        # time.sleep(2)
+        print( '//li[contains(@class,"el-select-dropdown__item")]/span[text()="{}"]'.format(robot_kind))
+        # self.finds(_lis)[-1].click()
+        self.finds(li)[-1].click()
 
     def robots_kind(self, robots_kind):
         _robotGroupKind = (By.XPATH, '//input[contains(@placeholder,"机器人组类型")]')
@@ -62,19 +72,32 @@ class BasePage(object):
         ActionChains(self.driver).send_keys(Keys.ESCAPE).perform()
         return self
 
-    def scroll(self):
-        _js = 'document.getElementsByClassName("el-table__body-wrapper is-scrolling-none")[0].scrollTop=10000'
+    def scroll(self, height):
+        _js = 'document.getElementsByClassName("el-table__body-wrapper is-scrolling-none")[0].scrollTop={}'.format(height)
         self.driver.execute_script(_js)
         time.sleep(3)
+
+    def list_option(self, name, option) ->WebElement:
+        _name = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../..//span[text()="{}"]'
+                 .format(name, option))
+        try:
+            ele = self.find(_name).click()
+        except:
+            try:
+                self.scroll(800)
+                ele = self.find(_name).click()
+            except:
+                self.scroll(-800)
+                ele = self.find(_name).click()
+        return ele
 
 
 if __name__ == "__main__":
     _url = 'http://www.baidu.com'
-    # b = BasePage()
-    # b.get_driver().find_element(By.ID, 'kw').send_keys('123')
-    # b.find_element(By.ID, 'kw').send_keys('123')
-    driver = BasePage().driver
-    # driver.get(_url)
-    # driver.find_element(By.ID, 'kw').send_keys('123')
-    # BasePage.get_driver().find_element(By.ID, 'kw').send_keys('123')
-    print(dir(driver))
+    _keyword = (By.ID, 'kw')
+    pages = BasePage()
+    driver = pages.driver
+    driver.get(_url)
+    pages.find(_keyword).send_keys('123')
+    # driver.find(_keyword).send_keys('123')
+    # print(dir(driver))

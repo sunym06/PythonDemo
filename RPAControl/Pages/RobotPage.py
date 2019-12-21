@@ -20,16 +20,17 @@ class RobotPage(BasePage):
         return RobotAddPage()
 
     def edit_robot(self, name):
-        _name = (By.XPATH, '//span[text()="{}"]/../../../..//span[text()="编 辑"]'.format(name))
-        print('_name:' + '//span[text()="{}"]/../../../..//span[text()="编 辑"]'.format(name))
-        try:
-            self.finds(_name)[-1].click()
-            return RobotEditPage()
-
-        except ElementNotInteractableException as e:
-            self.scroll()
-            self.finds(_name)[-1].click()
-            return RobotEditPage()
+        # _name = (By.XPATH, '//span[text()="{}"]/../../../..//span[text()="编 辑"]'.format(name))
+        # print('_name:' + '//span[text()="{}"]/../../../..//span[text()="编 辑"]'.format(name))
+        self.list_option(name, '编 辑')
+        # try:
+        #     self.finds(_name)[-1].click()
+        #     return RobotEditPage()
+        #
+        # except ElementNotInteractableException as e:
+        #     self.scroll()
+        #     self.finds(_name)[-1].click()
+        return RobotEditPage()
 
         # print(self.find_elements(_name)[-1].get_attribute('innerHTML'))
 
@@ -38,7 +39,12 @@ class RobotPage(BasePage):
         _del = (By.XPATH, '//span[contains(text(),"确定")]')
         _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
         time.sleep(1)
-        self.finds(_name)[-1].click()
+        self.list_option(name, '删 除')
+        # try:
+        #     self.finds(_name)[-1].click()
+        # except:
+        #     self.scroll()
+        #     self.finds(_name)[-1].click()
         if cancel:
             self.find(_cancel).click()
         else:

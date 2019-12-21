@@ -36,4 +36,4 @@
 # # web.close()
 
 a = ("a", "B")
-print(*a)
+print(*a )

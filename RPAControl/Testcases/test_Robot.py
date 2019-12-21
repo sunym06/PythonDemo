@@ -21,15 +21,13 @@ class TestRobot(object):
         print('\n  =========teardown_method=========\n')
 
     @pytest.mark.parametrize('robot_name, robot_kind, robot_description', [
-        ('T5', '无人值守', 'test 1'),
-        ('T6', '人工参与', 'test 1'),
-        ('T7', '人工参与', 'test 1'),
-        ('T8', '人工参与', 'test 1')
+        ('T6661', '无人值守', 'test a'),
+        ('T6651', '人工参与', 'test 吧')
     ])
     def test_add_robot(self, robot_name, robot_kind, robot_description):
         self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
 
-    @pytest.mark.parametrize('name', ['T12'])
+    @pytest.mark.parametrize('name', ['T86', 'TTT2', 'T516'])
     def test_edit_robot(self, name):
         contents_str = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
         robot_name = contents_str
@@ -37,7 +35,7 @@ class TestRobot(object):
         description = 'EDIT: \n' + contents_str + '\n' + contents_str
         self.Pages.to_robot().edit_robot(name).edit(None, None, description)
 
-    @pytest.mark.parametrize('name', ['T12'])
+    @pytest.mark.parametrize('name', ['T516', 'edit: 2019-12-20:12-48-19', 'edit: 2019-12-19:21-51-12'])
     def test_del_robot(self, name):
         self.Pages.to_robot().del_robot(name)
 
