@@ -16,9 +16,9 @@ class RobotsPage(BasePage):
         return RobotsAddPage()
 
     def search_robots(self, robots_name, robots_kind):
-        if robots_name != "":
+        if robots_name is not None:
             self.find(self._robotName).send_keys(robots_name)
-        if robots_kind != "":
+        if robots_kind is not None:
             self.robots_kind(robots_kind)
         self.find(self._search).click()
         return self

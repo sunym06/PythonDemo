@@ -10,7 +10,7 @@ class TestRobot(object):
 
     @classmethod
     def setup_class(cls):
-        cls.Pages = MainPage().home().login()
+        cls.Pages = MainPage().home().login('admin', None)
         # cls.driver.login()
 
         print('\n  =========setup_class=========\n')
@@ -35,7 +35,7 @@ class TestRobot(object):
         description = 'EDIT: \n' + contents_str + '\n' + contents_str
         self.Pages.to_robot().edit_robot(name).edit(None, None, description)
 
-    @pytest.mark.parametrize('name', ['T516', 'edit: 2019-12-20:12-48-19', 'edit: 2019-12-19:21-51-12'])
+    @pytest.mark.parametrize('name', ['T6651'])
     def test_del_robot(self, name):
         self.Pages.to_robot().del_robot(name)
 

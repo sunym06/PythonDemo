@@ -81,7 +81,9 @@ class BasePage(object):
         _name = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../..//span[text()="{}"]'
                  .format(name, option))
         try:
-            ele = self.find(_name).click()
+            for i in range(3):
+                ele = self.find(_name)
+            ele.click()
         except:
             try:
                 self.scroll(800)
@@ -90,6 +92,15 @@ class BasePage(object):
                 self.scroll(-800)
                 ele = self.find(_name).click()
         return ele
+
+    def cancel(self, cancel=False):
+        _del = (By.XPATH, '//span[contains(text(),"确定")]')
+        _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
+        if cancel:
+            self.find(_cancel).click()
+        else:
+            self.find(_del).click()
+
 
 
 if __name__ == "__main__":

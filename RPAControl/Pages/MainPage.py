@@ -22,7 +22,9 @@ class MainPage(BasePage):
 
 if __name__ == "__main__":
     b = MainPage().driver
-    b.get('http://www.baidu.com')
-    b.execute_script("document.body.style.zoom='0.5'")
+    b.get('https://www.baidu.com/')
 
+    def login(kw=None):
+        b.find_element_by_id('kw').send_keys(kw)
+    login()
     # a = MainPage().home()
