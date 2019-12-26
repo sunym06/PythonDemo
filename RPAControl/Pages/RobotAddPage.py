@@ -15,6 +15,7 @@ class RobotAddPage(BasePage):
     _message = (By.XPATH, '//p[@class="el-message__content"]')
 
     def add(self, robot_name, robot_kind, robot_description):
+        # todo 如果名称已存在，则返回提示信息
         self.find(self._robotName).send_keys(robot_name)
         self.robot_kind(robot_kind)
         self.find(self._description).send_keys(robot_description)

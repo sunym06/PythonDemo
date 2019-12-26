@@ -77,9 +77,13 @@ class BasePage(object):
         self.driver.execute_script(_js)
         time.sleep(3)
 
-    def list_option(self, name, option) ->WebElement:
+    # todo 把cancel合并进来
+    # cancel 是否取消，True点击取消/False点击确认
+    def list_option(self, name, option, cancel=False) -> WebElement:
         _name = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../..//span[text()="{}"]'
                  .format(name, option))
+        _del = (By.XPATH, '//span[contains(text(),"确定")]')
+        _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
         try:
             for i in range(3):
                 ele = self.find(_name)
@@ -91,16 +95,24 @@ class BasePage(object):
             except:
                 self.scroll(-800)
                 ele = self.find(_name).click()
-        return ele
-
-    def cancel(self, cancel=False):
-        _del = (By.XPATH, '//span[contains(text(),"确定")]')
-        _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
         if cancel:
             self.find(_cancel).click()
         else:
             self.find(_del).click()
+        # todo return 为Element不合适
+        return ele
 
+    def page_option(self, name):
+        _name = (By.XPATH, '//span[text()= "{}"]'.format(name))
+        self.find(_name).click()
+
+    # def cancel(self, cancel=False):
+    #     _del = (By.XPATH, '//span[contains(text(),"确定")]')
+    #     _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
+    #     if cancel:
+    #         self.find(_cancel).click()
+    #     else:
+    #         self.find(_del).click()
 
 
 if __name__ == "__main__":

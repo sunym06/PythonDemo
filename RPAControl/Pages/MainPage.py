@@ -13,7 +13,7 @@ class MainPage(BasePage):
     driver: WebDriver
 
     def home(self):
-        self.driver.get(self._url2)
+        self.driver.get(self._url)
         return LoginPage()
 
     def close(self):

@@ -34,6 +34,22 @@
 # # hah = web.find_elements_by_xpath('//*[@id="J_goodsList"]/ul/li')
 # # print(len(hah))
 # # web.close()
+#
+# a = ("a", "B")
+# print(*a)
+import time
 
-a = ("a", "B")
-print(*a )
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+
+driver = webdriver.Ie()
+url = 'http://news.baidu.com/'
+driver.get(url)
+time.sleep(6)
+
+
+eles = driver.find_element_by_xpath('//span[text()="百家号"]')
+# ele = driver.find_element_by_xpath('//*[@id="footer"]/A[5]')
+ActionChains(driver).move_to_element(eles).perform()
+# print("page: " + driver.page_source)
+eles.click()

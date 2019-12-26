@@ -10,7 +10,9 @@ class TestRobot(object):
 
     @classmethod
     def setup_class(cls):
-        cls.Pages = MainPage().home().login('admin', None)
+        cls.contents_str = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
+
+        cls.Pages = MainPage().home().login('admin', '111111')
         # cls.driver.login()
 
         print('\n  =========setup_class=========\n')
@@ -21,21 +23,20 @@ class TestRobot(object):
         print('\n  =========teardown_method=========\n')
 
     @pytest.mark.parametrize('robot_name, robot_kind, robot_description', [
-        ('T6661', '无人值守', 'test a'),
-        ('T6651', '人工参与', 'test 吧')
+        ('T617', '无人值守', 'test a'),
+        ('T618', '人工参与', 'test 吧')
     ])
     def test_add_robot(self, robot_name, robot_kind, robot_description):
         self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
 
-    @pytest.mark.parametrize('name', ['T86', 'TTT2', 'T516'])
+    @pytest.mark.parametrize('name', ['1226', 'W25'])
     def test_edit_robot(self, name):
-        contents_str = datetime.now().strftime('edit: \n' + '%Y-%m-%d:%H-%M-%S')
-        robot_name = contents_str
+        robot_name = self.contents_str
         robot_kind = "无人值守"
-        description = 'EDIT: \n' + contents_str + '\n' + contents_str
+        description = 'EDIT: \n' + self.contents_str + '\n' + self.contents_str
         self.Pages.to_robot().edit_robot(name).edit(None, None, description)
 
-    @pytest.mark.parametrize('name', ['T6651'])
+    @pytest.mark.parametrize('name', ['T68'])
     def test_del_robot(self, name):
         self.Pages.to_robot().del_robot(name)
 
@@ -49,4 +50,4 @@ class TestRobot(object):
         self.Pages.to_robots().search_robots("wang", "测试")
 
     def test_t(self):
-        self.Pages.to_robot().del_robot('T12', cancel=True)
+        self.Pages.to_robot().del_robot('T617')
