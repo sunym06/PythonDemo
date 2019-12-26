@@ -57,11 +57,12 @@ class Base(object):
         return self
 
     def scroll(self, height):
-        _js = 'document.getElementsByClassName("el-table__body-wrapper is-scrolling-none")[0].scrollTop={}'.format(height)
+        _js = 'document.getElementsByClassName' \
+              '("el-table__body-wrapper is-scrolling-none")[0].scrollTop={}'.format(height)
         self.driver.execute_script(_js)
         time.sleep(3)
 
-    def select(self, filters, value, dialog=True, ):
+    def select(self, filters, value, dialog=True):
         _robotKind = (By.XPATH, '//input[contains(@placeholder,"{}")]'.format(filters))
         _robotKind_dialog = (By.XPATH, '//div[@role="dialog"]//input[contains(@placeholder,"{}")]'.format(filters))
         _robotValue = (By.XPATH, '//li[@class="el-select-dropdown__item"]/span[text()="{}"]'.format(value))
@@ -74,7 +75,7 @@ class Base(object):
             time.sleep(3)
             self.finds(_robotValue)[-1].click()
 
-    def cancel(self,cancel=False):
+    def cancel(self, cancel=False):
         pass
 
 

@@ -11,14 +11,16 @@ class RobotEditPage(Base):
     _cancels = (By.XPATH, '//span[text()="取 消"]')
     _message = (By.XPATH, '//p[@class="el-message__content"]')
 
-    def edit(self, robot_name, robot_kind, description):
-        if robot_name is not None:
+    def edit(self, robot_name="no input", robot_kind="no input", description="no input"):
+
+        if robot_name != "no input":
             self.find(self._robotName).clear()
             self.find(self._robotName).send_keys(robot_name)
-        if robot_kind is not None:
-            self.robot_kind(robot_kind)
+        if robot_kind != "no input":
+            self.select("机器人类型", robot_kind)
+            # self.robot_kind(robot_kind)
             self.find(self._description).clear()
-        if description is not None:
+        if description != "no input":
             self.find(self._description).clear()
             self.find(self._description).send_keys(description)
             self.find(self._edit).click()
