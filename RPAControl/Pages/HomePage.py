@@ -18,8 +18,6 @@ class HomePage(Base):
         menu = self.find(self._robot_manger_status)
         if 'is-opened' in menu.get_attribute('class'):
             status = True
-        print("class is :" + menu.get_attribute('class'))
-        print('status is ' + str(status))
         return status
 
     def open_robot_manger(self):

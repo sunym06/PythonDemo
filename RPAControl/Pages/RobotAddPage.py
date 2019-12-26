@@ -15,6 +15,7 @@ class RobotAddPage(Base):
     _message = (By.XPATH, '//p[@class="el-message__content"]')
 
     def add(self, robot_name, robot_kind, robot_description):
+        # todo return 可返回多个值，通过加逗号区分；引用的时候可以用 _ 不使用；
         _name = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../..//span[text()="{}"]')
         _status = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../../'
                              'td[contains(@class,"column_8")]'.format(robot_name))
@@ -24,6 +25,6 @@ class RobotAddPage(Base):
         self.find(self._description).send_keys(robot_description)
         self.find(self._save).click()
         status = self.find(_status).get_attribute('textContent')
-        message = self.find(self._message).get_attribute('innerHTML')
-        return status, message
+        result = self.find(self._message).get_attribute('innerHTML')
+        return status, result
 
