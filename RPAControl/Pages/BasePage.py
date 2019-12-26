@@ -17,13 +17,6 @@ class BasePage(object):
     def find(self, kv) -> WebElement:
         ele = self.driver.find_element(*kv)
         return ele
-        # try:
-        #     for i in range(3):
-        #         ele = self.driver.find_element(by, value)
-        #     return ele
-        # except NoSuchElementException as e:
-        #     print("找不到以下元素:")
-        #     print(by, value)
 
     def finds(self, kv) -> list:
         time.sleep(2)
@@ -79,7 +72,7 @@ class BasePage(object):
 
     # todo 把cancel合并进来
     # cancel 是否取消，True点击取消/False点击确认
-    def list_option(self, name, option, cancel=False) -> WebElement:
+    def list_operation(self, name, option, cancel=False) -> WebElement:
         _name = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../..//span[text()="{}"]'
                  .format(name, option))
         _del = (By.XPATH, '//span[contains(text(),"确定")]')
@@ -102,17 +95,9 @@ class BasePage(object):
         # todo return 为Element不合适
         return ele
 
-    def page_option(self, name):
+    def page_operation(self, name="新 增"):
         _name = (By.XPATH, '//span[text()= "{}"]'.format(name))
         self.find(_name).click()
-
-    # def cancel(self, cancel=False):
-    #     _del = (By.XPATH, '//span[contains(text(),"确定")]')
-    #     _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
-    #     if cancel:
-    #         self.find(_cancel).click()
-    #     else:
-    #         self.find(_del).click()
 
 
 if __name__ == "__main__":

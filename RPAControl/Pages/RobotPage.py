@@ -12,15 +12,12 @@ class RobotPage(BasePage):
     _robotName = (By.XPATH, '//input[@placeholder="机器人名称"]')
     _robotKind = (By.XPATH, '//input[@placeholder="机器人类型"]')
 
-    # def add_robot(self):
-    #     self.find(self._add).click()
-    #     return RobotAddPage()
     def add_robot(self):
-        self.page_option('新 增')
+        self.page_operation()
         return RobotAddPage()
 
     def edit_robot(self, name):
-        self.list_option(name, '编 辑')
+        self.list_operation(name, '编 辑')
         return RobotEditPage()
 
     def del_robot(self, name, cancel=False):
@@ -30,12 +27,9 @@ class RobotPage(BasePage):
         :return: 上一页面
         """
         if cancel:
-            self.list_option(name, '删 除', cancel=True)
+            self.list_operation(name, '删 除', cancel=True)
         else:
-            self.list_option(name, "删 除")
-        # self.list_option(name, '删 除', cancel=cancel)
-        # if cancel is True:
-        #     self.cancel(cancel=True)
+            self.list_operation(name, "删 除")
         return RobotPage()
 
     def search_robot(self, robot_name, robot_kind):
@@ -51,4 +45,4 @@ class RobotPage(BasePage):
         return self
 
     def add(self, op):
-        self.list_option("新 增", )
+        self.list_operation("新 增", )
