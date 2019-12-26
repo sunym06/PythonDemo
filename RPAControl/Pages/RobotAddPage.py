@@ -17,10 +17,9 @@ class RobotAddPage(BasePage):
     def add(self, robot_name, robot_kind, robot_description):
         # todo 如果名称已存在，则返回提示信息
         self.find(self._robotName).send_keys(robot_name)
-        self.robot_kind(robot_kind)
+        self.select("机器人类型", robot_kind, dialog=True)
         self.find(self._description).send_keys(robot_description)
         self.find(self._save).click()
         message = self.find(self._message).get_attribute('innerHTML')
         return message
-
 

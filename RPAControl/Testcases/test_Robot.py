@@ -23,8 +23,8 @@ class TestRobot(object):
         print('\n  =========teardown_method=========\n')
 
     @pytest.mark.parametrize('robot_name, robot_kind, robot_description', [
-        ('T617', '无人值守', 'test a'),
-        ('T618', '人工参与', 'test 吧')
+        ('T61213', '无人值守', 'test a'),
+        ('T61223', '人工参与', 'test 吧')
     ])
     def test_add_robot(self, robot_name, robot_kind, robot_description):
         self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
@@ -41,7 +41,7 @@ class TestRobot(object):
         self.Pages.to_robot().del_robot(name)
 
     def test_robot_search(self):
-        self.Pages.to_robot().search_robot("", "无人值守")
+        self.Pages.to_robot().add_robot().search_robot("T619", "人工参与", "未注册")
 
     def test_group(self):
         self.Pages.to_robots()

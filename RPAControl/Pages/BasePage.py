@@ -37,20 +37,11 @@ class BasePage(object):
             self.find(self._lis).click()
 
     def robot_kind(self, robot_kind):
-        # 点击下拉框后个别情况下点击不到元素，是因为点击后下拉框未及时加载出内容，
-        # 而使用finds能够查到[-2]元素，故结束finds但未找到指定的元素
-
         _robotKind = (By.XPATH, '//input[contains(@placeholder,"机器人类型")]')
-        # _lis = (By.XPATH, '//div[@class="el-select-dropdown el-popper"]//'
-        #                   'ul[@class="el-scrollbar__view el-select-dropdown__list"]'
-        #                   '/li/span[text()="{}"]'.format(robot_kind))
-        li = (By.XPATH, '//li[contains(@class,"el-select-dropdown__item")]/span[text()="{}"]'.format(robot_kind))
-        # print(_lis)
-        self.finds(_robotKind)[-1].click()
-        # time.sleep(2)
-        print( '//li[contains(@class,"el-select-dropdown__item")]/span[text()="{}"]'.format(robot_kind))
-        # self.finds(_lis)[-1].click()
-        self.finds(li)[-1].click()
+        _robotKind_dialog = (By.XPATH, '//div[@role="dialog"]//input[contains(@placeholder,"机器人类型")]')
+        _li = (By.XPATH, '//li[@class="el-select-dropdown__item"]/span[text()="{}"]'.format(robot_kind))
+        self.find(_robotKind).click()
+        self.find(_li).click()
 
     def robots_kind(self, robots_kind):
         _robotGroupKind = (By.XPATH, '//input[contains(@placeholder,"机器人组类型")]')
@@ -70,8 +61,6 @@ class BasePage(object):
         self.driver.execute_script(_js)
         time.sleep(3)
 
-    # todo 把cancel合并进来
-    # cancel 是否取消，True点击取消/False点击确认
     def list_operation(self, name, option, cancel=False) -> WebElement:
         _name = (By.XPATH, '//div[@class="el-table__fixed-right"]//span[text()="{}"]/../../../..//span[text()="{}"]'
                  .format(name, option))
@@ -98,6 +87,23 @@ class BasePage(object):
     def page_operation(self, name="新 增"):
         _name = (By.XPATH, '//span[text()= "{}"]'.format(name))
         self.find(_name).click()
+
+    def select(self, filters, value, dialog=True, ):
+        _robotKind = (By.XPATH, '//input[contains(@placeholder,"{}")]'.format(filters))
+        _robotKind_dialog = (By.XPATH, '//div[@role="dialog"]//input[contains(@placeholder,"{}")]'.format(filters))
+        _robotValue = (By.XPATH, '//li[@class="el-select-dropdown__item"]/span[text()="{}"]'.format(value))
+
+        if dialog:
+            self.find(_robotKind_dialog).click()
+            self.finds(_robotValue)[-1].click()
+        else:
+            self.find(_robotKind).click()
+            self.finds(_robotValue)[-1].click()
+
+    # def robot_kind(self, robot_kind):
+    #     _li = (By.XPATH, '//li[@class="el-select-dropdown__item"]/span[text()="{}"]'.format(robot_kind))
+    #     self.find(_robotKind).click()
+    #     self.find(_li).click()
 
 
 if __name__ == "__main__":

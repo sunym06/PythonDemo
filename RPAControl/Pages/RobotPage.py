@@ -6,15 +6,26 @@ from RPAControl.Pages.RobotEditPage import RobotEditPage
 
 
 class RobotPage(BasePage):
-    _add = (By.XPATH, '//span[text()="新 增"]')
-    _search = (By.XPATH, '//span[text()="搜 索"]')
-    _clear = (By.XPATH, '//span[text()="清 空"]')
     _robotName = (By.XPATH, '//input[@placeholder="机器人名称"]')
     _robotKind = (By.XPATH, '//input[@placeholder="机器人类型"]')
 
     def add_robot(self):
         self.page_operation()
         return RobotAddPage()
+
+    def clear_robot(self):
+        self.page_operation("清 空")
+        return self
+
+    def search_robot(self, robot_name, robot_kind, robot_status):
+        if robot_name is not None:
+            self.find(self._robotName).send_keys(robot_name)
+        if robot_kind is not None:
+            self.select("机器人类型", robot_kind, dialog=False)
+        if robot_status is not None:
+            self.select("机器人状态", robot_status, dialog=False)
+        self.page_operation("搜 索")
+        return self
 
     def edit_robot(self, name):
         self.list_operation(name, '编 辑')
@@ -32,17 +43,5 @@ class RobotPage(BasePage):
             self.list_operation(name, "删 除")
         return RobotPage()
 
-    def search_robot(self, robot_name, robot_kind):
-        if robot_name is not None:
-            self.find(self._robotName).send_keys(robot_name)
-        if robot_kind is not None:
-            self.robot_kind(robot_kind)
-        self.find(self._search).click()
-        return self
 
-    def clear_robot(self):
-        self.find(self._clear).click()
-        return self
 
-    def add(self, op):
-        self.list_operation("新 增", )
