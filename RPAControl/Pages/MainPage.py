@@ -2,11 +2,11 @@ import time
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 from RPAControl.Drivers.ChromeDrivers import ChromeDrivers
-from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.Base import Base
 from RPAControl.Pages.LoginPage import LoginPage
 
 
-class MainPage(BasePage):
+class MainPage(Base):
 
     _url = 'http://192.168.8.222:8111/#/wel/index'
     _url2 = 'http://111.231.110.64:8222/#/wel/index'

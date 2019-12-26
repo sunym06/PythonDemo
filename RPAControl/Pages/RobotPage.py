@@ -1,16 +1,18 @@
 from selenium.webdriver.common.by import By
 
+from RPAControl.Pages.CommonPages import CommonPages
 from RPAControl.Pages.RobotAddPage import RobotAddPage
-from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.Base import Base
 from RPAControl.Pages.RobotEditPage import RobotEditPage
 
 
-class RobotPage(BasePage):
+class RobotPage(CommonPages):
     _robotName = (By.XPATH, '//input[@placeholder="机器人名称"]')
     _robotKind = (By.XPATH, '//input[@placeholder="机器人类型"]')
 
     def add_robot(self):
-        self.page_operation()
+        self.add()
+        # self.page_operation()
         return RobotAddPage()
 
     def clear_robot(self):
@@ -18,14 +20,18 @@ class RobotPage(BasePage):
         return self
 
     def search_robot(self, robot_name, robot_kind, robot_status):
-        if robot_name is not None:
-            self.find(self._robotName).send_keys(robot_name)
-        if robot_kind is not None:
-            self.select("机器人类型", robot_kind, dialog=False)
-        if robot_status is not None:
-            self.select("机器人状态", robot_status, dialog=False)
-        self.page_operation("搜 索")
+        self.search(robot_name, robot_kind, robot_status)
         return self
+
+    # def search_robot(self, robot_name, robot_kind, robot_status):
+    #     if robot_name is not None:
+    #         self.find(self._robotName).send_keys(robot_name)
+    #     if robot_kind is not None:
+    #         self.select("机器人类型", robot_kind, dialog=False)
+    #     if robot_status is not None:
+    #         self.select("机器人状态", robot_status, dialog=False)
+    #     self.page_operation("搜 索")
+    #     return self
 
     def edit_robot(self, name):
         self.list_operation(name, '编 辑')

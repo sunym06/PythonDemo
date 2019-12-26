@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
-from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.Base import Base
 
 
-class RobotEditPage(BasePage):
+class RobotEditPage(Base):
 
     _robotName = (By.XPATH, '//input[@placeholder="请输入 机器人名称"]')
     _description = (By.XPATH, '//textarea[@placeholder="请输入 描述"]')

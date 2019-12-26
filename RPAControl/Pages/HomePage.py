@@ -1,12 +1,12 @@
 import time
 
 from selenium.webdriver.common.by import By
-from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.Base import Base
 from RPAControl.Pages.RobotsPage import RobotsPage
 from RPAControl.Pages.RobotPage import RobotPage
 
 
-class HomePage(BasePage):
+class HomePage(Base):
     _RobotManger = (By.XPATH, '//span[text()="机器人管理"]')
     _robot_manger_status = (By.XPATH, '//span[text()="机器人管理"]/../..')
     _Robot = (By.XPATH, '//span[text()="机器人"]')

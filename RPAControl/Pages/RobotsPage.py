@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
 
 from RPAControl.Pages.RobotsAddPage import RobotsAddPage
-from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.Base import Base
 
 
-class RobotsPage(BasePage):
+class RobotsPage(Base):
     _add = (By.XPATH, '//span[text()="新 增"]')
     _search = (By.XPATH, '//span[text()="搜 索"]')
     _clear = (By.XPATH, '//span[text()="清 空"]')

@@ -1,10 +1,10 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from RPAControl.Pages.BasePage import BasePage
+from RPAControl.Pages.Base import Base
 from RPAControl.Pages.HomePage import HomePage
 
 
-class LoginPage(BasePage):
+class LoginPage(Base):
     _user = (By.NAME, 'username')
     _password = (By.NAME, 'password')
     _login = (By.XPATH, '//span[text()="登录"]')
