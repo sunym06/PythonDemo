@@ -63,6 +63,7 @@ class Base(object):
         time.sleep(3)
 
     def select(self, filters, value, dialog=True):
+        # todo 新增/编辑下拉框class不一样，目前select不能通用；
         _robotKind = (By.XPATH, '//input[contains(@placeholder,"{}")]'.format(filters))
         _robotKind_dialog = (By.XPATH, '//div[@role="dialog"]//input[contains(@placeholder,"{}")]'.format(filters))
         _robotValue = (By.XPATH, '//li[@class="el-select-dropdown__item"]/span[text()="{}"]'.format(value))
