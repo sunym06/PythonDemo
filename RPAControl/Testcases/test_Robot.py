@@ -23,13 +23,12 @@ class TestRobot(object):
     def test_add_robot(self, robot_name, robot_kind, robot_description, title, key, result, status):
         _title, _key, _result, _status = self.Pages.to_robot().add_robot().add(robot_name, robot_kind, robot_description)
         assert _result == result
-        assert len(_key) == 32
-        assert _title == "新 增"
+        assert len(_key) == len(key)
+        assert _title == title
         assert _status == status
 
     def test_add_robot_cancel(self):
-        for i in range(5):
-            self.Pages.to_robot().add_robot().cancel_robot()
+        self.Pages.to_robot().add_robot().cancel_robot()
 
     @pytest.mark.parametrize('name', ['T12a1bc', 'T12213'])
     def test_edit_robot(self, name):
@@ -42,8 +41,12 @@ class TestRobot(object):
     def test_del_robot(self, name):
         self.Pages.to_robot().del_robot(name)
 
-    def test_robot_search(self):
-        self.Pages.to_robot().search(robot_kind="人工参与", robot_status="未注册")
+    @pytest.mark.parametrize('_robot_name, _robot_kind, _robot_status', [
+        ('T2111111ab', '人工参与', '未注册'),
+        ('surface', '无人值守', '空闲')
+    ])
+    def test_robot_search(self, _robot_name, _robot_kind, _robot_status):
+        self.Pages.to_robot().search(robot_name=_robot_name, robot_kind=_robot_kind, robot_status=_robot_status )
 
     def test_group(self):
         self.Pages.to_robots()

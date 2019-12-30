@@ -23,8 +23,9 @@ class CommonPages(Base):
         _robotName = (By.XPATH, '//input[@placeholder="机器人名称"]')
         _robotKind = (By.XPATH, '//input[@placeholder="机器人类型"]')
         _robot_status = (By.XPATH, '//input[@placeholder="机器人状态"]')
-
+        _nums = (By.XPATH, '//span[@class="el-pagination__total"]')
         if robot_name != "no input":
+            self.find(self._robotName).clear()
             self.find(self._robotName).send_keys(robot_name)
         if robot_kind != "no input":
             self.select("机器人类型", robot_kind, dialog=False)
@@ -32,6 +33,7 @@ class CommonPages(Base):
             self.select("机器人状态", robot_status, dialog=False)
 
         self.common_operation("搜 索")
+        num = self.find(_nums).get_attribute('innerHTML')
         return self
 
     def clear(self):

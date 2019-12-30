@@ -89,7 +89,6 @@ class Base(object):
             self.finds(_robotValue)[-1].click()
         else:
             self.find(_robotKind).click()
-            # time.sleep(3)
             self.finds(_robotValue)[-1].click()
 
     def cancel(self):
