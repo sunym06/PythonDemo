@@ -12,26 +12,15 @@ class RobotPage(CommonPages):
 
     def add_robot(self):
         self.add()
-        # self.page_operation()
         return RobotAddPage()
-
-    def clear_robot(self):
-        self.page_operation("清 空")
-        return self
 
     def search_robot(self, robot_name, robot_kind, robot_status):
         self.search(robot_name, robot_kind, robot_status)
         return self
 
-    # def search_robot(self, robot_name, robot_kind, robot_status):
-    #     if robot_name is not None:
-    #         self.find(self._robotName).send_keys(robot_name)
-    #     if robot_kind is not None:
-    #         self.select("机器人类型", robot_kind, dialog=False)
-    #     if robot_status is not None:
-    #         self.select("机器人状态", robot_status, dialog=False)
-    #     self.page_operation("搜 索")
-    #     return self
+    def clear_robot(self):
+        self.page_operation("清 空")
+        return self
 
     def edit_robot(self, name):
         self.list_operation(name, '编 辑')

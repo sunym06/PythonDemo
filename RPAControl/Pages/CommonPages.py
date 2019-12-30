@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -42,6 +44,7 @@ class CommonPages(Base):
         _del = (By.XPATH, '//span[contains(text(),"确定")]')
         _cancel = (By.XPATH, '//span[contains(text(),"取消")]')
         try:
+            time.sleep(2)
             ele = self.find(_name)
             ele.click()
         except:
@@ -49,16 +52,6 @@ class CommonPages(Base):
             ele = self.find(_name).click()
 
             # todo 需要灵活滚动
-            # try:
-            #     self.scroll(800)
-            #     ele = self.find(_name).click()
-            # except:
-            #     self.scroll(-800)
-            #     ele = self.find(_name).click()
-        # if cancel:
-        #     self.find(_cancel).click()
-        # else:
-        #     self.find(_del).click()
         # todo return 为Element不合适
         return ele
 
