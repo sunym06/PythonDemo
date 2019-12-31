@@ -15,7 +15,7 @@ class RobotAddPage(Base):
         self.find(self._robotName).send_keys(robot_name)
         self.select("机器人类型", robot_kind, dialog=True)
         self.find(self._description).send_keys(robot_description)
-        title, key = self.assert_inner(robot_name)
+        title, key = self.assert_inner()
         self.find(self._save).click()
         result, status = self.assert_outer(robot_name)
         return title, key, result, status

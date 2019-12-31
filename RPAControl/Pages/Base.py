@@ -47,7 +47,7 @@ class Base(object):
     def assert_outer(self, robot_name):
         _status = (By.XPATH, find_table(robot_name, 8))
         _message = (By.XPATH, '//p[@class="el-message__content"]')
-        result = self.find(self._message).get_attribute('innerHTML')
+        result = self.find(_message).get_attribute('innerHTML')
         status = self.find(_status).get_attribute('textContent')
         return result, status
 
