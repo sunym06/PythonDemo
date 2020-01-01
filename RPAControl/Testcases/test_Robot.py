@@ -6,7 +6,8 @@ from RPAControl.data.GetData import GetData
 
 class TestRobot(object):
 
-    file = r'C:\sunym\03_workspace\00_PythonWorkspac\RPAControl\data\data.xlsx'
+    # file = r'C:\sunym\03_workspace\00_PythonWorkspac\RPAControl\data\data.xlsx'
+    file = r'../data/data.xlsx'
     data = GetData(file).get_value('robot')
 
     @classmethod

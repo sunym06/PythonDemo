@@ -13,7 +13,7 @@ class MainPage(Base):
     driver: WebDriver
 
     def home(self):
-        self.driver.get(self._url)
+        self.driver.get(self._url2)
         return LoginPage()
 
     def close(self):
@@ -24,7 +24,13 @@ if __name__ == "__main__":
     b = MainPage().driver
     b.get('https://www.baidu.com/')
 
-    def login(kw=None):
-        b.find_element_by_id('kw').send_keys(kw)
-    login()
-    # a = MainPage().home()
+    js = 'return JSON.stringify(window.performance.timing)'
+    s = b.execute_script(js)
+    print(s)
+    import json
+    print(json.dumps(json.loads(s), indent=4))
+    # print(json.dumps(s.json(), indent=4))
+    # def login(kw=None):
+    #     b.find_element_by_id('kw').send_keys(kw)
+    # login()
+    # # a = MainPage().home()

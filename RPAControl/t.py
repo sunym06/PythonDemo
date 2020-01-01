@@ -44,8 +44,11 @@
 # print(s)
 # for i in range(1, 5):
 #     print(i)
-#
-a = [1,2,4,6]
-b = [3]
-c = a.append(b)
-print(a)
+# #
+# a = [1,2,4,6]
+# b = [3]
+# c = a.append(b)
+# print(a)
+from os import path
+
+dir = path.
