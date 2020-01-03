@@ -1,0 +1,2 @@
+class RReportPage(object):
+    pass

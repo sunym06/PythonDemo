@@ -1,3 +1,4 @@
+import logging
 import random
 import time
 
@@ -27,8 +28,12 @@ class Base(object):
     driver: WebDriver
     driver = ChromeDrivers.get_driver()
 
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger('my_log')
+
     def find(self, kv) -> WebElement:
         for i in range(3):
+            self.logger.info('find message')
             ele = self.driver.find_element(*kv)
         return ele
 

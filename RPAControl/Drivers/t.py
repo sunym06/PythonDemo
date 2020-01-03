@@ -53,12 +53,12 @@
 # ActionChains(driver).move_to_element(eles).perform()
 # # print("page: " + driver.page_source)
 # eles.click()
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('my_log')
+logger.info('info message')
+logger.debug('debug message')
+logger.warning('warning message')
 
 
-def t():
-    print(t)
-
-def t(a, b):
-    print(a,b)
-
-t()

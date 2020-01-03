@@ -48,7 +48,21 @@
 # a = [1,2,4,6]
 # b = [3]
 # c = a.append(b)
-# print(a)
-from os import path
 
-dir = path.
+
+# # print(a)
+# from os import path
+#
+# dir = path.
+
+class T(object):
+    def __init__(self, a):
+        print('T' + a)
+
+
+class t(T):
+    def __init__(self, a):
+        print('t')
+
+
+c = t('ss')
